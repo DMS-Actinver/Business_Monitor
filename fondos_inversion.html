@@ -68,20 +68,45 @@
                 <a href="index.html" class="back-arrow text-decoration-none" style="color: #fff; font-size: 24px;">←</a>
             </div>
 
-            <div class="button-group filter-button-group d-flex gap-2 mb-4">
+            <!-- Grupo de Sexo -->
+            <div class="filter-button-group" data-filter-group="sexo">
                 <button class="btn btn-sm btn-outline-info active px-3" data-filter="*">Todos</button>
-                <button class="btn btn-sm btn-outline-info px-3" data-filter=".deuda">Fondos de Deuda</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".hombres">Hombres</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".mujeres">Mujeres</button>
+            </div>
+
+            <!-- Grupo de Edad -->
+            <div class="filter-button-group" data-filter-group="edad">
+                <button class="btn btn-sm btn-outline-info active px-3" data-filter="" class="active">Todas</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".18-25">18-25 años</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".26-40">26-40 años</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".41-50">41-50 años</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".mas50">+ 50</button>
+
+            </div>
+
+            <div class="filter-button-group" data-filter-group="productos">
+                <button class="btn btn-sm btn-outline-info active px-3" data-filter="*">Todos los productos</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".mixtos">Fondos Mixtos</button>
                 <button class="btn btn-sm btn-outline-info px-3" data-filter=".variable">Fondos de Renta
                     Variable</button>
-                <button class="btn btn-sm btn-outline-info px-3" data-filter=".mixtos">Fondos Mixtos</button>
-                <button class="btn btn-sm btn-outline-info px-3" data-filter=".mujeres">Mujeres</button>
-                <button class="btn btn-sm btn-outline-info px-3" data-filter=".hombres">Hombres</button>
-                <button class="btn btn-sm btn-outline-info px-3" data-filter=".casados">Casados</button>
-                <button class="btn btn-sm btn-outline-info px-3" data-filter=".solteros">Solteros</button>
-                <button class="btn btn-sm btn-outline-info px-3" data-filter=".25-40">25 - 40 años</button>
-                <button class="btn btn-sm btn-outline-info px-3" data-filter=".40-50">40 - 50 años</button>
-                <button class="btn btn-sm btn-outline-info px-3" data-filter=".mas50">Mayores de 50 años</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".deuda">Fondos de Deuda</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".credito">Tarjeta de crédito</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".hipotecario">Préstamo
+                    Hipotecario</button>
+                <button class="btn btn-sm btn-outline-info px-3" data-filter=".nomina">Nómina</button>
+
             </div>
+
+
+            <!-- Pon esto justo antes del div class="grid" -->
+            <div class="d-flex justify-content-end mb-3 px-2">
+                <button id="btn-reset-filtros" type="button" class="btn btn-sm btn-danger px-4 shadow-sm"
+                    style="z-index: 10;">
+                    Limpiar Consulta
+                </button>
+            </div>
+
 
 
 
@@ -139,8 +164,8 @@
                         data-bs-toggle="modal" data-bs-target="#modalClienteB" style="cursor: pointer;"></div>
                 <div class="grid-item mujeres casados 40-50 "><img src="images/s.png" data-bs-toggle="modal"
                         data-bs-target="#modalClienteC" style="cursor: pointer;"></div>
-                <div class="grid-item mujeres solteros mas50 deuda mixtos><img src=" images/s1.png"
-                    data-bs-toggle="modal" data-bs-target="#modalClienteD" style="cursor: pointer;"></div>
+                <div class="grid-item mujeres solteros mas50 deuda mixtos"><img src=" images/s1.png"
+                        data-bs-toggle="modal" data-bs-target="#modalClienteD" style="cursor: pointer;"></div>
                 <div class="grid-item mujeres casados 40-50 deuda"><img src="images/s2.png" data-bs-toggle="modal"
                         data-bs-target="#modalClienteE" style="cursor: pointer;"></div>
                 <div class="grid-item hombres solteros mas50 mixtos"><img src="images/s3.png" data-bs-toggle="modal"
