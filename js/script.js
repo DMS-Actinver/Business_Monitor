@@ -800,81 +800,85 @@ if (ctxMarketing) {
         type: 'bar',
         data: {
             labels: [
-                'Impresiones (1.2M)', 
-                'Clics (85K)', 
-                'Leads (2.8K)', 
-                'Citas (1.1K)', 
-                'Contratos (620)', 
+                'Impresiones (1.2M)',
+                'Clics (85K)',
+                'Leads (2.8K)',
+                'Citas (1.1K)',
+                'Contratos (620)',
                 'Cuentas Activas (450)' // Esta es la etiqueta larga
             ],
             datasets: [{
                 label: 'Volumen',
-                data: [1200, 950, 700, 450, 250, 120], 
+                data: [1200, 950, 700, 450, 250, 120],
                 backgroundColor: [
-                    'rgba(66, 5, 117, 0.65)', 
-                    'rgba(0, 25, 191, 0.59)',   
-                    'rgba(5, 143, 255, 0.92)',   
-                    'rgba(13, 202, 240, 0.73)',   
-                    'rgba(0, 253, 131, 0.8)',   
-                    '#00ff4c'                    
+                    'rgba(66, 5, 117, 0.65)',
+                    'rgba(0, 25, 191, 0.59)',
+                    'rgba(5, 143, 255, 0.92)',
+                    'rgba(13, 202, 240, 0.73)',
+                    'rgba(0, 253, 131, 0.8)',
+                    '#00ff4c'
                 ],
                 borderWidth: 0,
                 borderRadius: 5,
-                barPercentage: 0.8 
+                barPercentage: 0.8
             }]
         },
         options: {
-            indexAxis: 'y', 
+            indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
             layout: {
                 // *** ESTO ES LO QUE ARREGLA EL PROBLEMA ***
                 // Agregamos espacio extra a la izquierda para las etiquetas
                 padding: {
-                    left: 20 
+                    left: 20
                 }
             },
             plugins: {
                 legend: { display: false }
             },
             scales: {
-    x: { display: false },
-    y: {
-        grid: { display: false },
-        ticks: { 
-            color: 'white', 
-            font: { size: 12, family: 'Inter' }
-        },
-        // *** ESTA ES LA SOLUCIÓN DEFINITIVA ***
-        afterFit: (axis) => {
-            axis.width = 150; // Forzamos el ancho del área de texto a 150px
-        }
-    }
-}
+                x: { display: false },
+                y: {
+                    grid: { display: false },
+                    ticks: {
+                        color: 'white',
+                        font: { size: 12, family: 'Inter' }
+                    },
+                    // *** ESTA ES LA SOLUCIÓN DEFINITIVA ***
+                    afterFit: (axis) => {
+                        axis.width = 150; // Forzamos el ancho del área de texto a 150px
+                    }
+                }
+            }
         }
     });
 }
 
-//INICIA LOYALTY
+//LOYALTY
 
-$(document).ready(function() {
-    // 1. Inicializar Isotope (Igual que antes)
+$(document).ready(function () {
+    // --- 1. CONFIGURACIÓN INICIAL ---
+    var filtrosActivos = {};
     var $grid = $('.grid').isotope({
         itemSelector: '.grid-item',
         layoutMode: 'fitRows',
         transitionDuration: '0.4s'
     });
 
-    // 2. CREAR EL MOSAICO DE DIFERENTES CLIENTES
+    // FIX: Evita que las fotos se amontonen a la izquierda
+    $grid.imagesLoaded().progress(function () {
+        $grid.isotope('layout');
+    });
+
+    // --- 2. GRÁFICA Y MOSAICO (LOYALTY) ---
     const ctx = document.getElementById('filterChart').getContext('2d');
     let fillPattern;
-    
-    // Lista de tus imágenes (puedes añadir más nombres de tus archivos .png)
     const imageSources = ['images/a.png', 'images/b.png', 'images/c.png', 'images/d.png'];
     let loadedImages = 0;
     const images = [];
+    let filterChart;
 
-    // Cargamos todas las imágenes primero
     imageSources.forEach(src => {
         const img = new Image();
         img.src = src;
@@ -890,22 +894,15 @@ $(document).ready(function() {
     function createMultiPattern() {
         const tempCanvas = document.createElement('canvas');
         const tCtx = tempCanvas.getContext('2d');
-        
-        // Creamos un cuadro de 40x40 que tendrá 4 fotos miniatura (2x2)
         tempCanvas.width = 40;
         tempCanvas.height = 40;
-
-        // Dibujamos las 4 fotos escaladas en el mosaico
         if (images[0]) tCtx.drawImage(images[0], 0, 0, 20, 20);
         if (images[1]) tCtx.drawImage(images[1], 20, 0, 20, 20);
         if (images[2]) tCtx.drawImage(images[2], 0, 20, 20, 20);
         if (images[3]) tCtx.drawImage(images[3], 20, 20, 20, 20);
-
         fillPattern = ctx.createPattern(tempCanvas, 'repeat');
         initChart();
     }
-
-    let filterChart;
 
     function initChart() {
         filterChart = new Chart(ctx, {
@@ -914,7 +911,7 @@ $(document).ready(function() {
                 labels: ['Total', 'Hombres', 'Mujeres', 'Casados', 'Solteros', 'Deuda', 'Variable', 'Mixtos'],
                 datasets: [{
                     label: 'Clientes',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0], // Inicia en 0
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
                     backgroundColor: fillPattern,
                     borderColor: '#00e5ff',
                     borderWidth: 1
@@ -924,25 +921,18 @@ $(document).ready(function() {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    y: { 
-                        beginAtZero: true, 
-                        max: 60, 
-                        ticks: { color: '#aaa' },
-                        grid: { color: '#333' }
-                    },
+                    y: { beginAtZero: true, max: 60, ticks: { color: '#aaa' } },
                     x: { ticks: { color: '#fff', font: { size: 11 } } }
                 },
                 plugins: { legend: { display: false } }
             }
         });
+        refreshStats();
     }
 
-    // 3. Función de Conteo (Solo se activa al filtrar)
     function refreshStats() {
         if (!filterChart) return;
-        var $visibles = $grid.isotope('getFilteredItemElements');
-        var visibles = $($visibles);
-
+        var visibles = $($grid.isotope('getFilteredItemElements'));
         filterChart.data.datasets[0].data = [
             visibles.length,
             visibles.filter('.hombres').length,
@@ -956,32 +946,37 @@ $(document).ready(function() {
         filterChart.update();
     }
 
-    // 4. Lógica de Botones
-    $('.filter-button-group').on('click', 'button', function() {
-        var filterValue = $(this).attr('data-filter');
-        $grid.isotope({ filter: filterValue });
+    // --- 3. LÓGICA DE FILTROS Y RESET ---
+    $('.filter-button-group').on('click', 'button', function () {
+        var $this = $(this);
+        var $buttonGroup = $this.parents('.filter-button-group');
+        filtrosActivos[$buttonGroup.attr('data-filter-group')] = $this.attr('data-filter');
 
-        $('.filter-button-group button').removeClass('active');
-        $(this).addClass('active');
+        var comboFilter = "";
+        for (var prop in filtrosActivos) {
+            comboFilter += filtrosActivos[prop];
+        }
 
-        $grid.one('arrangeComplete', function() {
+        $buttonGroup.find('.active').removeClass('active');
+        $this.addClass('active');
+        $grid.isotope({ filter: comboFilter || '*' });
+
+        $grid.one('arrangeComplete', function () {
             refreshStats();
         });
     });
 
-    $grid.imagesLoaded().progress(function() {
+    // Botón Reset Blindado
+    $('#btn-reset-filtros').on('click', function () {
+        filtrosActivos = {};
+        $('.filter-button-group button').removeClass('active');
+        $('.filter-button-group button[data-filter="*"], .filter-button-group button[data-filter=""]').addClass('active');
+        $grid.isotope({ filter: '*' });
+        setTimeout(refreshStats, 300);
+    });
+
+    // Fix para modales
+    $('.modal').on('shown.bs.modal hidden.bs.modal', function () {
         $grid.isotope('layout');
     });
-});
-
-// MAS DE LOYALTY
-
-// --- FIX DE ISOTOPE PARA MODALES ---
-
-// Este código detecta cuando abres o cierras una modal (como la de Sandra o Francisco)
-// y obliga a las fotos a reacomodarse para que no se "compacten" a la izquierda.
-$('.modal').on('shown.bs.modal hidden.bs.modal', function () {
-    setTimeout(function() {
-        $grid.isotope('layout');
-    }, 200); // Le damos un pequeño tiempo para que la animación de la modal termine
 });
