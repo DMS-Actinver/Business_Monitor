@@ -904,14 +904,29 @@ $(document).ready(function () {
         initChart();
     }
 
-    function initChart() {
+//Nuevo orden interno y distribucion grafica de loyalty
+
+function initChart() {
         filterChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Total', 'Hombres', 'Mujeres', 'Casados', 'Solteros', 'Deuda', 'Variable', 'Mixtos'],
+                labels: [
+                    'Total', 
+                    'Hombres', 
+                    'Mujeres', 
+                    'Solteros', 
+                    'Casados',
+                    'Cuentas de Ahorro', 
+                    'Fondos Mixtos', 
+                    'Fondos Renta Variable', 
+                    'Fondos de Deuda', 
+                    'Tarjeta de Crédito', 
+                    'Préstamo Hipotecario', 
+                    'Nómina'
+                ],
                 datasets: [{
                     label: 'Clientes',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     backgroundColor: fillPattern,
                     borderColor: '#00e5ff',
                     borderWidth: 1
@@ -930,6 +945,9 @@ $(document).ready(function () {
         refreshStats();
     }
 
+
+
+
     function refreshStats() {
         if (!filterChart) return;
         var visibles = $($grid.isotope('getFilteredItemElements'));
@@ -937,11 +955,15 @@ $(document).ready(function () {
             visibles.length,
             visibles.filter('.hombres').length,
             visibles.filter('.mujeres').length,
-            visibles.filter('.casados').length,
-            visibles.filter('.solteros').length,
-            visibles.filter('.deuda').length,
-            visibles.filter('.variable').length,
-            visibles.filter('.mixtos').length
+            visibles.filter('.soltero').length,
+            visibles.filter('.casado').length,
+            visibles.filter('.ahorro').length,       // Cuentas de Ahorro
+            visibles.filter('.mixtos').length,       // Fondos Mixtos
+            visibles.filter('.variable').length,     // Fondos Renta Variable
+            visibles.filter('.deuda').length,        // Fondos de Deuda
+            visibles.filter('.credito').length,      // Tarjeta de Crédito
+            visibles.filter('.hipotecario').length,  // Préstamo Hipotecario
+            visibles.filter('.nomina').length,       // ¡Aquí ya cuenta Nómina correctamente!  
         ];
         filterChart.update();
     }
@@ -972,7 +994,7 @@ $(document).ready(function () {
         $('.filter-button-group button').removeClass('active');
         $('.filter-button-group button[data-filter="*"], .filter-button-group button[data-filter=""]').addClass('active');
         $grid.isotope({ filter: '*' });
-        setTimeout(refreshStats, 300);
+        setTimeout(refreshStats, 300); 
     });
 
     // Fix para modales
@@ -980,3 +1002,4 @@ $(document).ready(function () {
         $grid.isotope('layout');
     });
 });
+
