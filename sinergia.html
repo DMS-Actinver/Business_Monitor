@@ -9,6 +9,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Pequeña animación para las alertas de decisión */
+        .animate-pulse {
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+        }
+    </style>
 </head>
 
 <body class="theme-dark">
@@ -56,47 +67,50 @@
         <div class="row d-flex align-items-stretch">
             <div class="col-12 col-lg-8 mb-4">
                 <div class="card-custom p-4 h-100">
-                    <h6 class="text-info font-weight mb-0">Crecimiento Transversal: Banco & Casa de Bolsa</h6>
-                    <div class="text-end">
-                        <a href="index.html" class="back-arrow">←</a>
+                    <div class="d-flex justify-content-between align-items-start">
+
+
                     </div>
 
                     <div class="table-responsive mt-3">
                         <table class="table table-borderless align-middle" style="background-color: transparent;">
                             <thead>
-                                <tr style="border-bottom: 1px solid #334155; background-color: transparent !important;">
-                                    <th class="text-center" style="background-color: #002646; color: #00e5ff; border-bottom: 1px solid rgba(255,255,255,0.1);">SUCURSAL</th>
-                                    <th class="text-center" style="background-color: #002646; color: #00e5ff; border-bottom: 1px solid rgba(255,255,255,0.1);">CAPTACIÓN BANCO</th>
-                                    <th class="text-center" style="background-color: #002646; color: #00e5ff; border-bottom: 1px solid rgba(255,255,255,0.1);">CONVERSIÓN INVERSIÓN</th>
-                                    <th class="text-center" style="background-color: #002646; color: #00e5ff; border-bottom: 1px solid rgba(255,255,255,0.1);">EFICIENCIA</th>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <th style="background-color: #002646; color: #00e5ff;">SUCURSAL</th>
+                                    <th class="text-center" style="background-color: #002646; color: #00e5ff;">CAPTACIÓN BANCO</th>
+                                    <th class="text-center" style="background-color: #002646; color: #00e5ff;">CONVERSIÓN INV.</th>
+                                    <th class="text-center" style="background-color: #002646; color: #00e5ff;">EFICIENCIA</th>
+                                    <th class="text-center" style="background-color: #002646; color: #00e5ff;">ACCIÓN</th>
                                 </tr>
                             </thead>
                             <tbody id="tablaSinergiaBody">
-                                <tr>
+                                <tr class="border-bottom border-secondary-subtle">
                                     <td style="background-color: #002646; color: white;">Montes Urales</td>
-                                    <td class="text-center" style="background-color: #002646; color: white;">$45,200,000
-                                    </td>
-                                    <td class="text-center fw-bold text-info" style="background-color: #002646;">$32,100,000</td>
+                                    <td class="text-center" style="background-color: #002646; color: white;">$45.2M</td>
+                                    <td class="text-center fw-bold text-info" style="background-color: #002646;">$32.1M</td>
                                     <td class="text-center" style="background-color: #002646;"><span class="badge bg-success">71%</span></td>
+                                    <td class="text-center" style="background-color: #002646;"><button class="btn btn-sm btn-outline-info py-0">Replicar</button></td>
                                 </tr>
-                                <tr>
+                                <tr class="border-bottom border-secondary-subtle">
                                     <td style="background-color: #002646; color: white;">Monterrey</td>
-                                    <td class="text-center" style="background-color: #002646; color: white;">$28,500,000</td>
-                                    <td class="text-center   fw-bold text-info" style="background-color: #002646;">$14,250,000</td>
-                                    <td class="text-center" style="background-color: #002646;"><span
-                                            class="badge bg-warning text-dark">50%</span></td>
+                                    <td class="text-center" style="background-color: #002646; color: white;">$28.5M</td>
+                                    <td class="text-center fw-bold text-warning" style="background-color: #002646;">$14.2M</td>
+                                    <td class="text-center" style="background-color: #002646;"><span class="badge bg-warning text-dark">50%</span></td>
+                                    <td class="text-center" style="background-color: #002646;"><button class="btn btn-sm btn-outline-warning py-0">Alertar</button></td>
                                 </tr>
-                                <tr>
+                                <tr class="border-bottom border-secondary-subtle">
                                     <td style="background-color: #002646; color: white;">Guadalajara</td>
-                                    <td class="text-center" style="background-color: #002646; color: white;">$35,000,000</td>
-                                    <td class="text-center fw-bold text-info" style="background-color: #002646;">$21,700,000</td>
+                                    <td class="text-center" style="background-color: #002646; color: white;">$35.0M</td>
+                                    <td class="text-center fw-bold text-info" style="background-color: #002646;">$21.7M</td>
                                     <td class="text-center" style="background-color: #002646;"><span class="badge bg-success">62%</span></td>
+                                    <td class="text-center" style="background-color: #002646;"><button class="btn btn-sm btn-outline-info py-0">Mantener</button></td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #002646; color: white;">Queretaro</td>
-                                    <td class="text-center" style="background-color: #002646; color: white;">$12,000,000</td>
-                                    <td class="text-center fw-bold text-info" style="background-color: #002646;">$5,400,000</td>
+                                    <td class="text-center" style="background-color: #002646; color: white;">$12.0M</td>
+                                    <td class="text-center fw-bold text-danger" style="background-color: #002646;">$5.4M</td>
                                     <td class="text-center" style="background-color: #002646;"><span class="badge bg-danger">45%</span></td>
+                                    <td class="text-center" style="background-color: #002646;"><button class="btn btn-sm btn-danger py-0">Intervenir</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -105,15 +119,23 @@
             </div>
 
             <div class="col-12 col-lg-4 mb-4">
-                <div class="card-custom p-4 h-100 d-flex flex-column">
-                    <div class="card-title mb-3">Asistente IA</div>
-
-                    <div class="flex-grow-1">
-                        <textarea class="asistente-input w-100" placeholder="¿Qué porcentaje de los clientes de 'Solo Banco' en la sucursal Montes Urales tienen potencial para Fondos de Inversión?"
-                            style="height: 180px; background: transparent; border: none; color: white; outline: none; resize: none;"></textarea>
+                <div class="card-custom p-4 h-100 d-flex flex-column border border-info border-opacity-25">
+                    <div class="card-title mb-3 d-flex align-items-center">
+                        <span class="text-info">Asistente de Sinergia IA</span>
                     </div>
 
-                    <div class="d-flex justify-content-between mt-3">
+                    <div class="flex-grow-1">
+                        <div class="ia-response-text" style="color: #0dcaf0; font-size: 0.9rem; line-height: 1.4;">
+                            <strong>Análisis Proactivo:</strong><br>
+                            He detectado que en <strong>Querétaro</strong> el 55% de los clientes con nómina Actinver no tienen un fondo de inversión activo.
+                            <br><br>
+                            ¿Quieres que envíe la propuesta de "Fondo Blindado" a sus ejecutivos?
+                        </div>
+                        <textarea class="asistente-input w-100" placeholder="Escribe aquí para consultar más datos..."
+                            style="height: 100px; background: transparent; border: none; color: white; outline: none; resize: none;"></textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-3 pt-3 border-top border-secondary">
                         <button class="btn-asistente-blue">Imagen</button>
                         <button class="btn-asistente-cyan">Voz</button>
                     </div>
@@ -126,7 +148,10 @@
         <div class="row">
             <div class="col-12 mb-4">
                 <div class="card-custom p-4">
-                    <h6 class="text-info font-weight mb-0">Matríz de Impacto por Integración</h6>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="text-info font-weight mb-0">Matríz de Impacto por Integración</h6>
+                        <span class="small text-white-50 text-uppercase" style="letter-spacing: 1px;">Eje X: Volumen | Eje Y: Eficiencia</span>
+                    </div>
                     <div class="table-responsive mt-3">
                         <div class="chart-container" style="position: relative; height: 400px; width: 100%;">
                             <canvas id="graficaSinergia"></canvas>
