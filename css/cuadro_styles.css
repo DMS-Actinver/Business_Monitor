@@ -1,0 +1,342 @@
+body {
+    background-color: #0b131f;
+    /* Fondo oscuro exacto del layout */
+    font-family: 'Noto Sans', sans-serif;
+    color: #dde3e7;
+    padding: 32px 24px;
+}
+
+
+
+/* --- CONTENEDOR FLEX DE TARJETAS --- */
+.metrics-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.metric-flex-item {
+    flex: 1 1 300px;
+    min-width: 260px;
+}
+
+.task-card {
+    background: linear-gradient(180deg, #041d33 0%, #02101e 100%);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.main-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #bbc9cf;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.task-sub-icon {
+    width: 14px;
+    height: 14px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+/* --- SECCIÓN SEGUNDA TABLA: ASESORES --- */
+.section-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #00e5ff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-card-container {
+    background-color: #031628;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos de la Tabla Nativa */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.custom-table th {
+    color: #8fa0ac;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-table td {
+    padding: 20px 0;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Perfiles de Asesores */
+.advisor-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.advisor-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.advisor-name {
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.advisor-region {
+    font-size: 11px;
+    color: #8fa0ac;
+    margin: 0;
+}
+
+/* Badges de Estado */
+.status-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.badge-efficient {
+    background-color: rgba(100, 247, 151, 0.1);
+    color: #64f797;
+    border: 1px solid rgba(100, 247, 151, 0.2);
+}
+
+.badge-alert {
+    background-color: rgba(255, 114, 159, 0.1);
+    color: #ff729f;
+    border: 1px solid rgba(255, 114, 159, 0.2);
+}
+
+.badge-excellent {
+    background-color: rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+/* Barras de Progreso Compartidas */
+.custom-progress-bg {
+    background-color: rgba(255, 255, 255, 0.08);
+    height: 4px;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.custom-progress-bar {
+    height: 100%;
+    border-radius: 2px;
+}
+
+/* Inputs de Filtro */
+.search-input {
+    background-color: #05233c;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 6px 12px;
+    width: 220px;
+}
+
+.search-input::placeholder {
+    color: #6c7d8a;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 4px;
+}
+
+/* Footer de paginación */
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #8fa0ac;
+}
+
+.pagination-btn {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-left: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* --- CONTENEDOR PRINCIPAL DEL BANNER --- */
+.onboarding-health-banner {
+    background-color: #011d35;
+    /* Azul profundo idéntico al fondo del banner */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    padding: 32px 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    /* Ajustable según el contenedor general */
+}
+
+/* --- GRÁFICO CIRCULAR CSS (DIFUMINADO NEÓN) --- */
+.progress-circle-container {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Representación idéntica por CSS puro */
+.glow-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 8px solid #00e5ff;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(0, 229, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #021222;
+}
+
+.percentage-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+/* --- TEXTOS Y CONTENIDO --- */
+.banner-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #00e5ff;
+    /* Color cian característico */
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+}
+
+.banner-description {
+    font-size: 15px;
+    color: #aac1d0;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    max-width: 850px;
+}
+
+.highlight-green {
+    color: #64f797;
+    /* Verde de eficiencia */
+    font-weight: 600;
+}
+
+/* --- LEYENDAS / STATUS INDICATORS --- */
+.legends-container {
+    display: flex;
+    gap: 32px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.dot-stopper {
+    width: 8px;
+    height: 8px;
+    background-color: #ff729f;
+    /* Rosa de stopper crítico */
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-optimal {
+    width: 8px;
+    height: 8px;
+    background-color: #64f797;
+    /* Verde de flujo óptimo */
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Opción por si prefieres usar el asset de imagen directo */
+.asset-image-circle {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}

@@ -1,0 +1,1003 @@
+/*=========================================================
+=            ACTINVER BUSINESS MONITOR DASHBOARD          =
+=                    STYLE.CSS                            =
+=========================================================*/
+
+/*=========================================================
+=                     VARIABLES                           =
+=========================================================*/
+
+:root{
+
+    --primary:#0A2E57;
+    --primary-dark:#041F3B;
+
+    --secondary:#00C6FF;
+
+    --accent:#1FD5FF;
+
+    --success:#11D47B;
+
+    --warning:#F9B115;
+
+    --danger:#FF5A73;
+
+    --purple:#885CFF;
+
+    --bg:#0E1624;
+
+    --bg-card:#002646; 
+
+    --bg-card-dark:#121B29;
+
+    --border:#25344D;
+
+    --text:#FFFFFF;
+
+    --text-soft:#C7D4E6;
+
+    --text-muted:#92A4BC;
+
+    --shadow:0 15px 45px rgba(0,0,0,.35);
+
+    --radius:18px;
+
+    --transition:.35s ease;
+
+}
+
+/*=========================================================
+=                       RESET                             =
+=========================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+}
+
+/* Scroll */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111927;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#295E92;
+
+    border-radius:30px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#2E8BE6;
+
+}
+
+/*=========================================================
+=                    LINKS                                =
+=========================================================*/
+
+a{
+
+    text-decoration:none;
+
+    transition:var(--transition);
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+/*=========================================================
+=                    WRAPPER                              =
+=========================================================*/
+
+.wrapper{
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/*=========================================================
+=                    HEADER                               =
+=========================================================*/
+
+.header-navbar{
+
+    background:#062D53;
+
+    min-height:82px;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    box-shadow:0 5px 20px rgba(0,0,0,.30);
+
+    z-index:1000;
+
+}
+
+/*=========================================================
+=                      LOGO                               =
+=========================================================*/
+
+.logo-header{
+
+    height:48px;
+
+    width:auto;
+
+    transition:var(--transition);
+
+}
+
+.logo-header:hover{
+
+    transform:scale(1.03);
+
+}
+
+/*=========================================================
+=                   NAVIGATION                            =
+=========================================================*/
+
+.navbar-nav{
+
+    gap:10px;
+
+}
+
+.navbar-nav .nav-link{
+
+    color:rgba(255,255,255,.75);
+
+    font-size:15px;
+
+    font-weight:500;
+
+    padding:10px 18px;
+
+    border-radius:10px;
+
+    transition:var(--transition);
+
+}
+
+.navbar-nav .nav-link:hover{
+
+    color:#fff;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.navbar-nav .nav-link.active{
+
+    background:#00C6FF;
+
+    color:#062D53;
+
+    font-weight:700;
+
+}
+
+/*=========================================================
+=                  USER SECTION                           =
+=========================================================*/
+
+.header-user{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.user-data{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.user-name{
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+.user-data small{
+
+    color:#AAC6E8;
+
+    font-size:11px;
+
+    letter-spacing:.8px;
+
+}
+
+/*=========================================================
+=                      AVATAR                             =
+=========================================================*/
+
+.avatar{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid rgba(255,255,255,.20);
+
+    transition:var(--transition);
+
+    cursor:pointer;
+
+}
+
+.avatar:hover{
+
+    transform:scale(1.06);
+
+    border-color:#00C6FF;
+
+}
+
+/*=========================================================
+=                    THEME SWITCH                         =
+=========================================================*/
+
+.theme-switch{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.switch{
+
+    position:relative;
+
+    display:inline-block;
+
+    width:52px;
+
+    height:26px;
+
+}
+
+.switch input{
+
+    opacity:0;
+
+    width:0;
+
+    height:0;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    cursor:pointer;
+
+    top:0;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    background:#345E8B;
+
+    transition:.4s;
+
+    border-radius:50px;
+
+}
+
+.slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:20px;
+
+    height:20px;
+
+    left:3px;
+
+    bottom:3px;
+
+    background:white;
+
+    transition:.4s;
+
+    border-radius:50%;
+
+}
+
+.switch input:checked + .slider{
+
+    background:#00C6FF;
+
+}
+
+.switch input:checked + .slider:before{
+
+    transform:translateX(26px);
+
+}
+
+/*=========================================================
+=                  MAIN CONTENT                           =
+=========================================================*/
+
+.dashboard-container{
+
+    padding:35px;
+
+}
+
+/*=========================================================
+=                    SECTION TITLE                        =
+=========================================================*/
+
+.section-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin-bottom:22px;
+
+    color:#fff;
+
+}
+
+/*=========================================================
+=                 DASHBOARD TITLE
+=========================================================*/
+
+.dashboard-title{
+
+    font-size:28px;
+    font-weight:800;
+    color:#FFFFFF;
+    margin-bottom:28px;
+    letter-spacing:.5px;
+
+}
+
+/*=========================================================
+=                  STAGE CARDS
+=========================================================*/
+
+.stage-card{
+
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    min-height:175px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+        180deg,
+        #183D69 0%,
+        #143457 55%,
+        #102A47 100%
+    );
+
+    border:1px solid rgba(255,255,255,.05);
+
+    overflow:hidden;
+
+    transition:all .35s ease;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+}
+
+/* Línea superior */
+
+.stage-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:5px;
+
+    background:#00D8FF;
+
+}
+
+/* Glow */
+
+.stage-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-60px;
+    top:-60px;
+
+    width:160px;
+    height:160px;
+
+    border-radius:50%;
+
+    background:rgba(0,216,255,.08);
+
+}
+
+/* Hover */
+
+.stage-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+
+        0 18px 45px rgba(0,0,0,.35),
+
+        0 0 25px rgba(0,216,255,.15);
+
+}
+
+/*=========================================================
+=                TITULO DE ETAPA
+=========================================================*/
+
+.stage-name{
+
+    color:#EAF4FF;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    line-height:1.45;
+
+    min-height:48px;
+
+    z-index:2;
+
+}
+
+/*=========================================================
+=                 SUBTITLE
+=========================================================*/
+
+.stage-subtitle{
+
+    color:#8BC9FF;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    margin-top:8px;
+
+    z-index:2;
+
+}
+
+/*=========================================================
+=                NUMERO PRINCIPAL
+=========================================================*/
+
+.stage-number{
+
+    margin-top:auto;
+
+    color:#FFFFFF;
+
+    font-size:42px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    line-height:1;
+
+    z-index:2;
+
+}
+
+/*=========================================================
+=                GRID AJUSTES
+=========================================================*/
+
+#kpis .row{
+
+    align-items:stretch;
+
+}
+
+#kpis .col-xl-2{
+
+    display:flex;
+
+}
+
+#kpis .col-xl-2 .stage-card{
+
+    width:100%;
+
+}
+
+/*=========================================================
+=              ANIMACION ENTRADA
+=========================================================*/
+
+.stage-card{
+
+    animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*=========================================================
+=                   PANELS
+=========================================================*/
+
+.panel-card{
+
+    background:linear-gradient(180deg,#183A63,#112842);
+
+    border-radius:24px;
+
+    padding:28px;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    box-shadow:0 15px 40px rgba(0,0,0,.28);
+
+    height:100%;
+
+    transition:.35s;
+
+}
+
+.panel-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.35);
+
+}
+
+/*=========================================================
+=                 PANEL HEADER
+=========================================================*/
+
+.panel-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.panel-title{
+
+    margin:0;
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.panel-subtitle{
+
+    margin-top:4px;
+
+    margin-bottom:0;
+
+    color:#8EB7DA;
+
+    font-size:13px;
+
+}
+
+/*=========================================================
+=                    BOTONES
+=========================================================*/
+
+.panel-actions{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.btn-panel{
+
+    background:#274B75;
+
+    border:none;
+
+    color:white;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    transition:.30s;
+
+}
+
+.btn-panel:hover{
+
+    background:#00CFFF;
+
+    color:#052C50;
+
+}
+
+.btn-panel.active{
+
+    background:#00D8FF;
+
+    color:#052C50;
+
+    font-weight:700;
+
+}
+
+/*=========================================================
+=                 CHART
+=========================================================*/
+
+.chart-container{
+
+    position:relative;
+
+    width:100%;
+
+    height:420px;
+
+}
+
+/*=========================================================
+=                 PULSE PANEL
+=========================================================*/
+
+.pulse-panel{
+
+    min-height:520px;
+
+}
+
+.pulse-content{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:420px;
+
+}
+
+/*=========================================================
+=                 PULSO ANALITICO
+=========================================================*/
+
+.pulse-widget{
+
+    position:relative;
+
+    width:250px;
+
+    height:250px;
+
+    margin:auto;
+
+}
+
+.pulse-svg{
+
+    width:100%;
+    height:100%;
+
+    transform:rotate(-90deg);
+
+}
+
+.pulse-bg{
+
+    fill:none;
+
+    stroke:#24415D;
+
+    stroke-width:14;
+
+}
+
+.pulse-progress{
+
+    fill:none;
+
+    stroke:#00D8FF;
+
+    stroke-width:14;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:515;
+
+    stroke-dashoffset:93;
+
+    filter:drop-shadow(0 0 12px rgba(0,216,255,.55));
+
+}
+
+.pulse-center{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.pulse-percent{
+
+    font-size:52px;
+
+    font-weight:800;
+
+    color:white;
+
+}
+
+.pulse-text{
+
+    margin-top:8px;
+
+    color:#9EC2E2;
+
+    font-size:15px;
+
+}
+
+.pulse-stats{
+
+    margin-top:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.pulse-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:12px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.pulse-label{
+
+    color:#D5E6F7;
+
+    font-size:15px;
+
+}
+
+.pulse-value{
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.green{
+
+    color:#21D884;
+
+}
+
+.cyan{
+
+    color:#00D8FF;
+
+}
+
+.yellow{
+
+    color:#FFC545;
+
+}
+
+.red{
+
+    color:#FF5D6D;
+
+}
+
+/*=========================================================
+=                ANIMACION CIRCULO
+=========================================================*/
+
+.pulse-progress{
+
+    animation:ringAnimation 2.2s ease;
+
+}
+
+@keyframes ringAnimation{
+
+    from{
+
+        stroke-dashoffset:515;
+
+    }
+
+    to{
+
+        stroke-dashoffset:93;
+
+    }
+
+}
+
+/* =========================================================
+   =         ESTILOS PARA LA SECCIÓN DE ASESORES (OXTRO)   =
+   ========================================================= */
+
+/* Forzamos a que el header de tu menú mantenga su visibilidad y color sobre Tailwind */
+.main-header {
+    background: #062D53 !important;
+    position: relative;
+    z-index: 9999 !important;
+    display: block !important;
+}
+
+/* Estructura base para el efecto de brillo interactivo */
+.advisor-card-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Capa virtual que dibuja el haz de luz siguiendo el cursor */
+.advisor-card-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+    );
+    z-index: 3;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* Corrección de alineación nativa para iconos Material Symbols */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.modal-content{
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
