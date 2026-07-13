@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actinver - Monitor de Incidencias</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/incidencias_style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            // ¡ESTO ES LO MÁS IMPORTANTE! Evita que Tailwind rompa el colapso responsivo de Bootstrap
+            corePlugins: {
+                preflight: false,
+            },
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#00210c",
+                        "inverse-primary": "#00677f",
+                        "surface-container": "#1a2123",
+                        "on-primary-fixed": "#001f28",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#b7eaff",
+                        "on-secondary": "#650032",
+                        "surface-variant": "#2f3639",
+                        "on-secondary-fixed-variant": "#8e0049",
+                        "on-primary-fixed-variant": "#004e60",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#4ae183",
+                        "primary-fixed-dim": "#4cd6ff",
+                        "on-primary": "#003543",
+                        "on-primary-container": "#00566a",
+                        "inverse-on-surface": "#2b3134",
+                        "on-secondary-fixed": "#3e001d",
+                        "background": "#0e1417",
+                        "surface-container-high": "#242b2e",
+                        "primary": "#a4e6ff",
+                        "secondary-fixed-dim": "#ffb1c7",
+                        "on-tertiary-fixed-variant": "#005228",
+                        "inverse-surface": "#dde3e7",
+                        "surface-dim": "#0e1417",
+                        "surface-container-lowest": "#090f12",
+                        "tertiary-container": "#42da7d",
+                        "surface-container-highest": "#2f3639",
+                        "primary-container": "#00d1ff",
+                        "on-secondary-container": "#59002b",
+                        "tertiary-fixed": "#6bfe9c",
+                        "on-tertiary": "#003919",
+                        "on-tertiary-container": "#005b2c",
+                        "on-surface": "#dde3e7",
+                        "surface-tint": "#4cd6ff",
+                        "surface-bright": "#333a3d",
+                        "on-background": "#dde3e7",
+                        "on-surface-variant": "#bbc9cf",
+                        "secondary-container": "#ff4994",
+                        "tertiary": "#64f797",
+                        "secondary-fixed": "#ffd9e2",
+                        "error-container": "#93000a",
+                        "surface": "#0e1417",
+                        "surface-container-low": "#161d1f",
+                        "secondary": "#ffb1c7",
+                        "outline": "#859399",
+                        "outline-variant": "#3c494e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Geist"],
+                        "data-mono": ["Geist"],
+                        "body-sm": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "body-md": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "display-md": ["Geist"],
+                        "body-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "data-mono": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+
+<body class="theme-dark">
+    <header class="main-header">
+
+        <nav class="navbar navbar-expand-lg navbar-dark w-100 p-0">
+            <div class="container-fluid">
+                <div class="header-left d-flex align-items-center">
+                    <img src="images/logo-header.png" class="header-logo" alt="Actinver">
+                    <div class="divider-v"></div>
+                    <span class="header-monitor-text d-none d-sm-inline">Business Monitor</span>
+                </div>
+
+                <button class="navbar-toggler border-0 ms-auto me-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuActinver" aria-controls="menuActinver" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="menuActinver">
+                    <div class="navbar-nav gap-2 py-3 py-lg-0">
+                        <a href="index.html" class="nav-link p-0"><button class="nav-btn-custom">General</button></a>
+                        <a href="sinergia.html" class="nav-link p-0"><button
+                                class="nav-btn-custom">Sinergia</button></a>
+                        <a href="productos.html" class="nav-link p-0"><button
+                                class="nav-btn-custom">Productos</button></a>
+                        <a href="asesores.html" class="nav-link p-0"><button
+                                class="nav-btn-custom">Asesores</button></a>
+                        <a href="incidencias_2.html" class="nav-link p-0"><button
+                                class="nav-btn-custom">Incidencias</button></a>
+                        <a href="seguros.html" class="nav-link p-0"><button class="nav-btn-custom">Seguros</button></a>
+                        <a href="compliance.html" class="nav-link p-0"><button
+                                class="nav-btn-custom active">Compliance</button></a>
+                        <a href="benchmark.html" class="nav-link p-0"><button
+                                class="nav-btn-custom">Benchmark</button></a>
+                        <a href="marketing.html" class="nav-link p-0"><button
+                                class="nav-btn-custom">Marketing</button></a>
+                        <a href="loyalty_2.html" class="nav-link p-0"><button
+                                class="nav-btn-custom">Loyalty</button></a>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="text-end me-3">
+                        <div class="user-name">Tania Barrios</div>
+                        <a href="login.html" class="user-session text-decoration-none">CERRAR SESIÓN</a>
+                    </div>
+                    <img src="images/avatar.png" class="rounded-circle border border-secondary" width="40" height="40"
+                        alt="Avatar">
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="container-fluid mt-4 px-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card-title" style="color: #00e5ff;">
+                    ONBOARDING CLIENTES
+                </div>
+                <div class="funnel-container">
+                    <div class="funnel-step"><a href="complemento.html">
+                            <div class="funnel-label">1. Captación</div>
+                            <div class="funnel-number">1,240</div>
+                        </a>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-label">2. Activación</div>
+                        <div class="funnel-number">1,189</div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-label">3. Diagnóstico</div>
+                        <div class="funnel-number">890</div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-label">4. Propuesta</div>
+                        <div class="funnel-number">760</div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-label">5. Cierre</div>
+                        <div class="funnel-number">690</div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-label">6. Posventa</div>
+                        <div class="funnel-number">560</div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-4 px-4">
+        <div class="row">
+
+
+            <div class="col-12">
+                <div class="card-custom p-4">
+                    <h6 class="text-info font-weight mb-0">CAPTACIÓN CLIENTES MES/INCIDENCIAS</h6>
+                    <div class="chart-container" style="position: relative; height: 350px; width: 100%;">
+                        <canvas id="graficaValorSeguros"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <main class="container-fluid mt-4 mx-auto px-4 py-4">
+        <!-- Header Section -->
+        <div class="flex justify-between items-end mb-lg  border-outline-variant pb-md">
+            <div>
+                <div class="card-title" style="color: #00e5ff;">
+                    ASESORES ACTIVOS</div>
+            </div>
+
+        </div>
+        <!-- Advisor Grid: Bento Grid Style -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+            <!-- Advisor Card 1 -->
+<div class="card-custom border-outline-variant rounded-xl p-md advisor-card-glow transition-all duration-300 group cursor-pointer relative overflow-hidden">
+    <div class="absolute top-0 right-0 p-sm">
+        <span class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors">trending_up</span>
+    </div>
+    <div class="flex flex-col items-center text-center">
+        <div class="w-20 h-20 rounded-full border-2 border-primary/20 group-hover:border-primary p-1 mb-md transition-all">
+            <!-- Cambiado: Ahora apunta a la modal con id "modalPerfilAsesor" -->
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modalPerfilAsesor">
+                <img class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                    data-alt="A professional headshot of a financial advisor named Asesor 1. The image shows a person in professional attire with a friendly smile, set against a dark, minimalist office background. The lighting is sophisticated, with blue ambient accents reflecting the brand's primary color palette. High resolution, high contrast, analytical corporate aesthetic."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_DGnyoQ5PgoJcXPGLsERnSyV6xuHjCAKOhoiEewINHnuNoN65zecGrQuKrinsqlGHjZWus0JrBtYm0vwMBH1bA1nK3mOS2fuoUjvNSmGEB6sOafXbZirV0Bt5M613NtwkWiB_-hQDrJ8WIkudu3igRR9NNcfOfWDjjzgK-Ckaz-CkkDvxVXxnqCUcFWF8XeRPl2_If1hJyH43W2V5RYxx-Rll_kkbWpetUr6HA-qOqh4fxjUUGKnK" />
+            </a>
+        </div>
+        <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Asesor 1</h3>
+        <div class="flex items-center gap-xs text-on-surface-variant text-body-sm mb-md">
+            <span class="material-symbols-outlined text-[14px]">location_on</span>
+            Polanco, CDMX
+        </div>
+        <div class="w-full bg-surface-variant/30 rounded-lg p-sm border border-outline-variant/50">
+            <div class="flex justify-between items-center mb-xs">
+                <span class="font-label-caps text-label-caps text-on-surface-variant">Cartera</span>
+                <span class="font-data-mono text-data-mono text-primary">42 Clientes</span>
+            </div>
+            <div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+                <div class="h-full bg-primary" style="width: 78%;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- Advisor Card 2 -->
+            <div
+                class="card-custom border-outline-variant rounded-xl p-md advisor-card-glow transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-sm">
+                    <span
+                        class="material-symbols-outlined text-secondary/30 group-hover:text-secondary transition-colors">stars</span>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div
+                        class="w-20 h-20 rounded-full border-2 border-secondary/20 group-hover:border-secondary p-1 mb-md transition-all">
+                        <img class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                            data-alt="A high-quality portrait of a female financial expert for the business monitor portal. She is wearing a modern suit, and the lighting is cinematic with a focus on professional clarity. The background is a blurred dark financial district at night. The color palette incorporates deep blues and magenta accents, matching the brand's sophisticated analytical style."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG0QUXCY0eVpY3xsjoh0SgFVNzIuioEsuo1NHSWNEIT7rnbtuC_hCpx4_0tyD4VkV39lL8Bx3p6koYxPtt8okm7yUkR2kprWDlePi9jztFcn7t_qvKZ0XLbU_IZy-6jAmuuNtw3HFCd-Smr5hkG3lg5Bpk6RB7YOGYEF8MKwA7o2MriHaS3TDp4mhnFVe7URdRzUK3ZLvTklxAjFVyuxSPcLx7gO1j78kuFwRrO6hzI4PlbhuMkTWd" />
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Asesor 2</h3>
+                    <div class="flex items-center gap-xs text-on-surface-variant text-body-sm mb-md">
+                        <span class="material-symbols-outlined text-[14px]">location_on</span>
+                        Santa Fe, CDMX
+                    </div>
+                    <div class="w-full bg-surface-variant/30 rounded-lg p-sm border border-outline-variant/50">
+                        <div class="flex justify-between items-center mb-xs">
+                            <span class="font-label-caps text-label-caps text-on-surface-variant">Cartera</span>
+                            <span class="font-data-mono text-data-mono text-secondary">56 Clientes</span>
+                        </div>
+                        <div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+                            <div class="h-full bg-secondary" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Advisor Card 3 -->
+            <div
+                class="card-custom border-outline-variant rounded-xl p-md advisor-card-glow transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-sm">
+                    <span
+                        class="material-symbols-outlined text-tertiary/30 group-hover:text-tertiary transition-colors">verified</span>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div
+                        class="w-20 h-20 rounded-full border-2 border-tertiary/20 group-hover:border-tertiary p-1 mb-md transition-all">
+                        <img class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                            data-alt="A professional studio portrait of a senior financial advisor for a corporate dashboard. The subject is a mature professional with an air of authority and experience. Dark studio lighting with green-tinted rim lighting to align with the tertiary brand color. The overall mood is serious, analytical, and highly professional, reflecting expertise in wealth management."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-Z8kXV3EBslLLV8KN3nQyafBnL5-j0HRLfIWxP8BPI2jx6S6h3b-YcZWRjWKfPkmJSYkBqEsqqyMEGfePPojqdzVKJV91Lvi-GDvlP-_UXiVF8fmB4m-YI09rrobOQwbmjD-BGMWkt1xvx1txHudHaRFQ1uSaeNtN-9xZ1OY-VoUXrviI7IEbFmcfg6fifM84j5P5Zb_6MtgVeGOP6Dpveb8LvdIqe9bcB5A4UapiUyXb-Q0LNrnv" />
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Asesor 3</h3>
+                    <div class="flex items-center gap-xs text-on-surface-variant text-body-sm mb-md">
+                        <span class="material-symbols-outlined text-[14px]">location_on</span>
+                        Monterrey, NL
+                    </div>
+                    <div class="w-full bg-surface-variant/30 rounded-lg p-sm border border-outline-variant/50">
+                        <div class="flex justify-between items-center mb-xs">
+                            <span class="font-label-caps text-label-caps text-on-surface-variant">Cartera</span>
+                            <span class="font-data-mono text-data-mono text-tertiary">38 Clientes</span>
+                        </div>
+                        <div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+                            <div class="h-full bg-tertiary" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Advisor Card 4 -->
+            <div
+                class="card-custom border-outline-variant rounded-xl p-md advisor-card-glow transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-sm">
+                    <span
+                        class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors">monitoring</span>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div
+                        class="w-20 h-20 rounded-full border-2 border-primary/20 group-hover:border-primary p-1 mb-md transition-all">
+                        <img class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                            data-alt="A portrait of a young, dynamic male advisor in a modern high-tech office setting. The image is captured with shallow depth of field, highlighting the subject against a background of data monitors. The lighting uses cool cyan tones to match the primary brand color. The style is sharp, clean, and energetic, conveying a sense of innovation and precision in financial services."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2QOXiZ57VwN5WiPeSz0rX6xRDQ6piuikxiC5AanaA4vFnTd-sj7ShNXBvE0V495DFZD94pMpaZwNQUowyONJijFao-gZwYwFAMgosDLD2ubWjcwqD9k9bLA9sMXjMgaooOylwd3o_Hgnork5jS3zRKcKlq6BD7W2SjptsEcYEYVEAbYMl-JTdFU1m0B1xN5FiP0D8E1v53cVGNFT8xLNU5oFqdMHWJNAB3Yzix5sljjFf87eVmdVO" />
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Asesor 4</h3>
+                    <div class="flex items-center gap-xs text-on-surface-variant text-body-sm mb-md">
+                        <span class="material-symbols-outlined text-[14px]">location_on</span>
+                        Guadalajara, JAL
+                    </div>
+                    <div class="w-full bg-surface-variant/30 rounded-lg p-sm border border-outline-variant/50">
+                        <div class="flex justify-between items-center mb-xs">
+                            <span class="font-label-caps text-label-caps text-on-surface-variant">Cartera</span>
+                            <span class="font-data-mono text-data-mono text-primary">29 Clientes</span>
+                        </div>
+                        <div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+                            <div class="h-full bg-primary" style="width: 45%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+<!-- Modal para cargar la ficha del asesor de forma aislada -->
+<!-- Modal para cargar la ficha del asesor de forma aislada mediante iframe -->
+<div class="modal fade" id="modalPerfilAsesor" tabindex="-1" aria-labelledby="modalPerfilAsesorLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        
+        <!-- Forzamos el contenedor de la modal a gris claro -->
+        <div class="modal-content" style="background-color: transparent !important; border: none; border-radius: 32px; overflow: hidden;">
+            
+            <div class="modal-header border-0 p-3 position-absolute top-0 end-0" style="z-index: 1055;">
+                <!-- Cambié el botón de cierre a oscuro para que contraste bien con el fondo claro -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 50%;"></button>
+            </div>
+            
+            <div class="modal-body p-4" style="background-color: #f3f4f6 !important;">
+    
+    <iframe src="ficha1.html" 
+            title="Perfil del Asesor" 
+            allowtransparency="true" 
+            style="width: 100%; height: 80vh; border: none; display: block; background-color: #f3f4f6 !important; background: #f3f4f6 !important;">
+    </iframe>
+
+</div>
+        </div>
+
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/incidencias.js"></script>
+
+</body>
+
+</html>

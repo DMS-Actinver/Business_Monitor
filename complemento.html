@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actinver - Incidencias / Complemento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cuadro_styles.css" <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+</head>
+
+<body class="theme-dark">
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-dark w-100 p-0">
+            <div class="container-fluid">
+                <div class="header-left d-flex align-items-center">
+                    <img src="images/logo-header.png" class="header-logo" alt="Actinver">
+                    <div class="divider-v"></div>
+                    <span class="header-monitor-text d-none d-sm-inline">Business Monitor</span>
+                </div>
+
+                <button class="navbar-toggler border-0 ms-auto me-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuActinver" aria-controls="menuActinver" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="menuActinver">
+                    <div class="navbar-nav gap-2 py-3 py-lg-0">
+                        <a href="index.html" class="nav-link p-0"><button class="nav-btn-custom">General</button></a>
+                        <a href="sinergia.html" class="nav-link p-0"><button class="nav-btn-custom">Sinergia</button></a>
+                        <a href="productos.html" class="nav-link p-0"><button class="nav-btn-custom">Productos</button></a>
+                        <a href="asesores.html" class="nav-link p-0"><button class="nav-btn-custom">Asesores</button></a>
+                        <a href="incidencias_2.html" class="nav-link p-0"><button class="nav-btn-custom active">Incidencias</button></a>
+                        <a href="seguros.html" class="nav-link p-0"><button class="nav-btn-custom">Seguros</button></a>
+                        <a href="compliance.html" class="nav-link p-0"><button class="nav-btn-custom">Compliance</button></a>
+                        <a href="benchmark.html" class="nav-link p-0"><button class="nav-btn-custom">Benchmark</button></a>
+                        <a href="marketing.html" class="nav-link p-0"><button class="nav-btn-custom">Marketing</button></a>
+                        <a href="loyalty_2.html" class="nav-link p-0"><button class="nav-btn-custom">Loyalty</button></a>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="text-end me-3">
+                        <div class="user-name">Tania Barrios</div>
+                        <a href="login.html" class="user-session text-decoration-none">CERRAR SESIÓN</a>
+                    </div>
+                    <img src="images/avatar.png" class="rounded-circle border border-secondary" width="40" height="40"
+                        alt="Avatar">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid mt-4 px-4">
+        <div class="row g-4 d-flex align-items-stretch">
+            <div class="col-12 col-lg-8">
+                <div class="card-custom p-4 h-100">
+                    <h6 class="text-info font-weight mb-0">Desempeño Operativo por Asesor</h6>
+
+
+                    <div class="table-responsive mt-3">
+                        <div>
+
+                            <!-- COMPONENTE BANNER -->
+                            <div class="onboarding-health-banner">
+
+                                <!-- CONTENEDOR DEL CÍRCULO (Opción CSS puro con glow idéntico) -->
+                                <div>
+                                    <div class="glow-circle">
+                                        <span class="percentage-text">82%</span>
+                                    </div>
+
+                                </div>
+
+                                <!-- BLOQUE DE TEXTOS E INDICADORES -->
+                                <div class="flex-grow-1">
+                                    <h2 class="banner-title">Proceso de Onboarding: Salud General</h2>
+
+                                    <p class="banner-description">
+                                        Identificando y resolviendo cuellos de botella diarios para mantener la
+                                        velocidad de onboarding.
+                                        Actualmente operamos con un <span class="highlight-green">82% de eficiencia
+                                            operativa</span> respecto al objetivo mensual.
+                                    </p>
+
+                                    <!-- LEYENDAS INFERIORES -->
+                                    <div class="legends-container">
+                                        <div class="legend-item">
+                                            <span class="dot-stopper"></span>
+                                            Stopper Crítico
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="dot-optimal"></span>
+                                            Flujo Óptimo
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="card-custom p-4 h-100 d-flex flex-column">
+                    <div class="card-title mb-3">Asistente IA</div>
+
+                    <div>
+                        <p>"Los rechazos de KYC han subido un
+                            5% esta hora debido a problemas de
+                            iluminación en la sucursal Monterrey."
+                        </p>
+                    </div><br><br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid mt-4 px-4">
+
+        <!-- Fila de Tarjetas Unificadas -->
+        <div class="metrics-flex-container">
+
+            <!-- TARJETA 1: KYC & Documentos -->
+            <div class="metric-flex-item">
+                <div class="task-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <img src="images/hug.png" class="main-icon" alt="KYC Icon">
+                        <span style="color: #00e5ff; font-weight: 600; font-size: 14px;">78%</span>
+                    </div>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 14px;">KYC & Documentos
+                    </h3>
+
+                    <!-- Barra de Progreso Azul -->
+                    <div class="custom-progress-bg mb-4">
+                        <div class="custom-progress-bar" style="background-color: #00e5ff; width: 78%;"></div>
+                    </div>
+
+                    <p
+                        style="font-size: 11px; font-weight: 700; color: #a4e6ff; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px;">
+                        Tareas para destrabar</p>
+
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <img src="images/exclamacion.png" class="task-sub-icon">
+                            <span>Identificaciones expiradas (12)</span>
+                        </li>
+                        <li class="task-item">
+                            <img src="images/exclamacion.png" class="task-sub-icon">
+                            <span>Fotos borrosas / Ilegibles</span>
+                        </li>
+                        <li class="task-item">
+                            <img src="images/exclamacion.png" class="task-sub-icon">
+                            <span>Comprobante domicilio antiguo</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TARJETA 2: Biometría -->
+            <div class="metric-flex-item">
+                <div class="task-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <img src="images/face.png" class="main-icon" alt="Biometría Icon">
+                        <span style="color: #ffb1c7; font-weight: 600; font-size: 14px;">45%</span>
+                    </div>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 14px;">Biometría</h3>
+
+                    <!-- Barra de Progreso Rosa -->
+                    <div class="custom-progress-bg mb-4">
+                        <div class="custom-progress-bar" style="background-color: #ffb1c7; width: 45%;"></div>
+                    </div>
+
+                    <p style="font-size: 11px; font-weight: 700; color: #ffb1c7; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px;">
+                        Tareas para destrabar</p>
+
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <img src="images/exclamacion 2.png" class="task-sub-icon">
+                            <span>Mala iluminacion (Sucursales)</span>
+                        </li>
+                        <li class="task-item">
+                            <img src="images/exclamacion 2.png" class="task-sub-icon">
+                            <span>Mismatch Facial detectado</span>
+                        </li>
+                        <li class="task-item">
+                            <img src="images/exclamacion 2.png" class="task-sub-icon">
+                            <span>Error en captura de huella</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TARJETA 3: Técnico / APIs -->
+            <div class="metric-flex-item">
+                <div class="task-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <img src="images/flower.png" class="main-icon" alt="APIs Icon">
+                        <span style="color: #64f797; font-weight: 600; font-size: 14px;">92%</span>
+                    </div>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 14px;">Técnico / APIs
+                    </h3>
+
+                    <!-- Barra de Progreso Verde -->
+                    <div class="custom-progress-bg mb-4">
+                        <div class="custom-progress-bar" style="background-color: #64f797; width: 92%;"></div>
+                    </div>
+
+                    <p
+                        style="font-size: 11px; font-weight: 700; color: #64f797; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px;">
+                        Tareas para destrabar</p>
+
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <img src="images/mike.png" class="task-sub-icon">
+                            <span>API Externa (INE) - Operativa</span>
+                        </li>
+                        <li class="task-item">
+                            <img src="images/exclamacion.png" class="task-sub-icon">
+                            <span>Fallo en SMS OTP (Telcel)</span>
+                        </li>
+                        <li class="task-item">
+                            <img src="images/mike.png" class="task-sub-icon">
+                            <span>Latencia de red estable</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TARJETA 4: Compliance -->
+            <div class="metric-flex-item">
+                <div class="task-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <img src="images/hammer.png" class="main-icon" alt="Compliance Icon">
+                        <span style="color: #00e5ff; font-weight: 600; font-size: 14px;">61%</span>
+                    </div>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 14px;">Compliance</h3>
+
+                    <!-- Barra de Progreso Azul -->
+                    <div class="custom-progress-bg mb-4">
+                        <div class="custom-progress-bar" style="background-color: #00e5ff; width: 61%;"></div>
+                    </div>
+
+                    <p
+                        style="font-size: 11px; font-weight: 700; color: #a4e6ff; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px;">
+                        Tareas para destrabar</p>
+
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <img src="images/exclamacion.png" class="task-sub-icon">
+                            <span>Matches en Listas PEP (4)</span>
+                        </li>
+                        <li class="task-item">
+                            <img src="images/exclamacion.png" class="task-sub-icon">
+                            <span>Inconsistencia de Datos Fiscales</span>
+                        </li>
+                    </ul>
+
+                    <!-- Icono inferior de opciones de la tarjeta Compliance -->
+                    <div class="mt-auto pt-2">
+                        <img src="images/hug.png" style="width: 16px; height: 16px; opacity: 0.6;" alt="Options">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <div class="container-fluid mt-4 px-4">
+        <!-- ÚLTIMA SECCIÓN -->
+        <div class="section-title-container">
+            <div class="section-title">
+                <!-- Archivo subido: users.png (Icono de grupo de usuarios azul claro) -->
+                <img src="images/usuarios.png" style="width: 20px" alt="Icono Asesores">
+                Desempeño de Asesores & Bloqueos
+            </div>
+            <div class="d-flex gap-2">
+                <input type="text" class="search-input" placeholder="Buscar asesor...">
+                <button class="filter-btn">⚙ Filtrar</button>
+            </div>
+        </div>
+
+        <div class="table-card-container">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Asesor</th>
+                        <th style="width: 15%; text-align: center;">Temas de Bloqueo</th>
+                        <th style="width: 25%;">Salud Operativa</th>
+                        <th style="width: 15%;">Stopper Común</th>
+                        <th style="width: 10%; text-align: center;">Estado</th>
+                        <th style="width: 5%; text-align: right;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ASESOR 1: Ricardo Gómez -->
+                    <tr>
+                        <td>
+                            <div class="advisor-profile">
+                                <!-- Archivo subido: avatar3.png -->
+                                <img src="images/asesor 1.png" class="advisor-avatar" alt="Ricardo">
+                                <div>
+                                    <p class="advisor-name">Asesor 1: Ricardo Gómez</p>
+                                    <p class="advisor-region">División Norte</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="text-align: center; font-weight: 600;">24</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="custom-progress-bg" style="max-width: 180px;">
+                                    <div class="custom-progress-bar" style="background-color: #64f797; width: 88%;">
+                                    </div>
+                                </div>
+                                <span style="color: #64f797; font-weight: 600;">88%</span>
+                            </div>
+                        </td>
+                        <td style="color: #bbc9cf;">Biometría (Iluminación)</td>
+                        <td style="text-align: center;">
+                            <span class="status-badge badge-efficient">EFICIENTE</span>
+                        </td>
+                        <td style="text-align: right;">
+                            <a href="#" style="color: #8fa0ac; text-decoration: none;">↗</a>
+                        </td>
+                    </tr>
+
+                    <!-- ASESOR 2: Elena Valles -->
+                    <tr>
+                        <td>
+                            <div class="advisor-profile">
+                                <!-- Archivo subido: avatar2.png -->
+                                <img src="images/asesor 2.png" class="advisor-avatar" alt="Elena">
+                                <div>
+                                    <p class="advisor-name">Asesor 2: Elena Valles</p>
+                                    <p class="advisor-region">División Bajío</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="text-align: center; font-weight: 600;">52</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="custom-progress-bg" style="max-width: 180px;">
+                                    <div class="custom-progress-bar" style="background-color: #ff729f; width: 62%;">
+                                    </div>
+                                </div>
+                                <span style="color: #ff729f; font-weight: 600;">62%</span>
+                            </div>
+                        </td>
+                        <td style="color: #bbc9cf;">KYC (ID Expirada)</td>
+                        <td style="text-align: center;">
+                            <span class="status-badge badge-alert">EN ALERTA</span>
+                        </td>
+                        <td style="text-align: right;">
+                            <a href="#" style="color: #8fa0ac; text-decoration: none;">↗</a>
+                        </td>
+                    </tr>
+
+                    <!-- ASESOR 3: Marco Ruiz -->
+                    <tr>
+                        <td>
+                            <div class="advisor-profile">
+                                <!-- Archivo subido: avatar1.png -->
+                                <img src="images/asesor 3.png" class="advisor-avatar" alt="Marco">
+                                <div>
+                                    <p class="advisor-name">Asesor 3: Marco Huiz</p>
+                                    <p class="advisor-region">División CDMX</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="text-align: center; font-weight: 600;">15</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="custom-progress-bg" style="max-width: 180px;">
+                                    <div class="custom-progress-bar" style="background-color: #64f797; width: 95%;">
+                                    </div>
+                                </div>
+                                <span style="color: #64f797; font-weight: 600;">95%</span>
+                            </div>
+                        </td>
+                        <td style="color: #bbc9cf;">Activacion (CLABE)</td>
+                        <td style="text-align: center;">
+                            <span class="status-badge badge-excellent">EXCELENTE</span>
+                        </td>
+                        <td style="text-align: right;">
+                            <a href="#" style="color: #8fa0ac; text-decoration: none;">↗</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Footer con paginación -->
+            <div class="table-footer">
+                <div>Mostrando 3 de 14 asesores</div>
+                <div>
+                    <span class="pagination-btn">‹</span>
+                    <span class="pagination-btn">›</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="images/js/script.js"></script>
+
+</body>
+
+</html>
